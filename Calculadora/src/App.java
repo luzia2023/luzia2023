@@ -6,7 +6,7 @@ public class  App {
         Scanner entrada = new Scanner (System.in);
 
         int primeiro,segundo;
-        int resultado;
+        double resultado;
 
         primeiro = 7;
         segundo = 12;
@@ -52,7 +52,14 @@ public class  App {
               
                 resDiv = primeiro / segundo;
                 System.out.println("Igual a "+resDiv);
-             
+                break; 
+
+                case 5:
+                resultado = Math.pow(primeiro, segundo);
+                System.out.println(resultado);
+     
+            case 0: 
+                System.out.println("Encerrando!");   
                 break;
             default:
                 break;
