@@ -1,8 +1,10 @@
 public class App {
     public static void main(String[] args) {
+        Filho filho = new Filho();
 
-        filho.setNome(nome:"Luzia");
-        filho.setIdade(idade:20);
+
+        filho.setNome(nome: "Luzia");
+        filho.setIdade(idade: 20);
 
         System.out.println("Nome: " + filho.getNome);
         System.out.println("Idade:  " + filho.getIdade);
