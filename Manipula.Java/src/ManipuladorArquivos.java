@@ -34,7 +34,7 @@ public class ManipuladorArquivos {
                 entrada.close();
 
             }catch (IOException e) {
-                
+
             }
         }
 
