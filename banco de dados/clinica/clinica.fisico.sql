@@ -1,0 +1,1 @@
+Create Database if not exists clinica2;
