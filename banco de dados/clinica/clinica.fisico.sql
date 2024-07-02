@@ -1,6 +1,3 @@
-Create Database if not exists clinica2;
-
-
 CREATE DATABASE IF NOT EXISTS CLINICA2;
 
 USE CLINICA2;
@@ -28,8 +25,25 @@ CREATE TABLE PACIENTE(
 CREATE TABLE ESPECIALIDADE(
 	NOMEESPECIALIDADE VARCHAR(30) NOT NULL,
     IDESPECIALIDADE INT NOT NULL AUTO_INCREMENT,
-    CONSTRAINT ESPECILAIDA_PK PRIMARY KEY (IDESPECIALIDADE)
+    CONSTRAINT ESPECIALIDADE_PK PRIMARY KEY (IDESPECIALIDADE)
 ) ENGINE = INNODB;
+
+create table possuiespecialidade(
+idespecialidade int not null,
+numerocrm bigint not null,
+estadocrm char(2) not null,
+
+constraint possui_especialidade_UK unique(idespecialidade, numerocrm, estadocrm),
+	constraint possui_especialidade_medico_FK foreign key(numerocrm,estadocrm)
+		references medico(numerocrm,estadocrm)
+		ON delete cascade,
+        constraint possui_especialidade_FK foreign key(idespecialidade)
+			references ESPECIALIDADE(IDESPECIALIDADE)
+				on delete cascade
+)engine = innodb;			
+
+select * from possuiespecialidade;
+
 
 CREATE TABLE CONSULTA(
 	IDCONSULTA INT NOT NULL AUTO_INCREMENT,
@@ -46,3 +60,18 @@ CREATE TABLE CONSULTA(
 		REFERENCES PACIENTE(ID)
 			ON DELETE CASCADE
 )ENGINE = INNODB;
+
+
+create table telefone(
+	telefone decimal(11) not null,
+    idpaciente int not null,
+    
+    constraint telefone_UK unique (telefone, idpaciente),
+    CONSTRAINT telefone_PACIENTE_FK FOREIGN KEY (IDPACIENTE)
+		REFERENCES PACIENTE(ID)
+			ON DELETE CASCADE
+)engine = InnoDB;
+
+
+
+select* from paciente;
